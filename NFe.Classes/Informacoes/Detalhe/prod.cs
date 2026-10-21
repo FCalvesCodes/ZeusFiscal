@@ -28,6 +28,8 @@ namespace NFe.Classes.Informacoes.Detalhe
         private string _cEan;
         private string _cEanTrib;
         private decimal _vUnCom;
+        private decimal? _vUnComLiq;
+        private decimal? _vProdLiq;
 
         /// <summary>
         ///     I02 - Código do produto ou serviço
@@ -150,6 +152,26 @@ namespace NFe.Classes.Informacoes.Detalhe
         {
             get { return _vprod; }
             set { _vprod = value.Arredondar(2); }
+        }
+
+        /// <summary>
+        ///     I11b - Valor Líquido Unitário do Produto ou Serviço (sem tributos)
+        ///     <para>Sequência I11a (opcional; futuramente obrigatória), conforme NT 2026.008.</para>
+        /// </summary>
+        public decimal? vUnComLiq
+        {
+            get { return _vUnComLiq; }
+            set { _vUnComLiq = value.Arredondar(10); }
+        }
+
+        /// <summary>
+        ///     I11c - Valor Líquido do Produto ou Serviço (sem tributos)
+        ///     <para>Deve ser igual a vUnComLiq * qCom, com tolerância de 0,01 (Rejeição 1279). NT 2026.008.</para>
+        /// </summary>
+        public decimal? vProdLiq
+        {
+            get { return _vProdLiq; }
+            set { _vProdLiq = value.Arredondar(2); }
         }
 
         /// <summary>
@@ -304,6 +326,16 @@ namespace NFe.Classes.Informacoes.Detalhe
         public bool ShouldSerializenItemPed()
         {
             return nItemPed.HasValue;
+        }
+
+        public bool ShouldSerializevUnComLiq()
+        {
+            return vUnComLiq.HasValue;
+        }
+
+        public bool ShouldSerializevProdLiq()
+        {
+            return vProdLiq.HasValue;
         }
 
         public bool ShouldSerializevFrete()

@@ -33,6 +33,7 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         ///     <para>N10f (ICMSSN202) - Grupo CRT=1 – Simples Nacional e CSOSN=202 ou 203</para>
         ///     <para>N10g (ICMSSN500) - Grupo CRT=1 – Simples Nacional e CSOSN = 500</para>
         ///     <para>N10h (ICMSSN900) - Grupo CRT=1 – Simples Nacional e CSOSN=900</para>
+        ///     <para>NB01 (ICMSPrevistoPagtoAntecip) - Grupo do ICMS Previsto no Pagamento Antecipado (NT 2026.008)</para>
         /// </summary>
         [XmlElement("ICMS00", typeof (ICMS00))]
         [XmlElement("ICMS02", typeof(ICMS02))]
@@ -55,6 +56,7 @@ namespace NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual
         [XmlElement("ICMSSN202", typeof (ICMSSN202))]
         [XmlElement("ICMSSN500", typeof (ICMSSN500))]
         [XmlElement("ICMSSN900", typeof (ICMSSN900))]
+        [XmlElement("ICMSPrevistoPagtoAntecip", typeof (ICMSPrevistoPagtoAntecip))]
         public ICMSBasico TipoICMS { get; set; }
     }
 }

@@ -3,6 +3,18 @@ namespace NFe.Classes.Informacoes.Total
     public class total
     {
         private decimal? _vNFTot;
+        private decimal? _vProdLiqTot;
+
+        /// <summary>
+        ///     W01a - Valor Total Líquido dos Produtos ou Serviços (sem tributos)
+        ///     <para>Soma dos vProdLiq dos itens (Rejeições 1282 e 1283). NT 2026.008.</para>
+        ///     <para>Primeiro filho de total (nº 326a, antes de ICMSTot nº 327).</para>
+        /// </summary>
+        public decimal? vProdLiqTot
+        {
+            get => _vProdLiqTot;
+            set => _vProdLiqTot = value.Arredondar(2);
+        }
 
         /// <summary>
         ///     W02 - Grupo Totais referentes ao ICMS
@@ -30,6 +42,11 @@ namespace NFe.Classes.Informacoes.Total
         {
             get => _vNFTot;
             set => _vNFTot = value.Arredondar(2);
+        }
+
+        public bool ShouldSerializevProdLiqTot()
+        {
+            return _vProdLiqTot.HasValue;
         }
 
         public bool ShouldSerializevNFTot()
